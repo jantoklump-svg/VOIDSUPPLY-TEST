@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOID SUPPLY - WIP</title>
+<link rel="stylesheet" href="../css/H_style.css">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+<img id="logo-img" src="../img/logo.png" alt="Logo">
+<div class="logo">VOIDSUPPLY</div>
+</head>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>VOID SUPPLY</h1>
+    <h2>503 - Service Unavailable.</h2>
+    <h1></h1>
+    <button id="Button1" onclick="window.location.href='homepage.html'">Zurück zur Homepage</button>
+  </div>
+
+
+
+</section>
+
+<div class="warning">!</div>
+<div id="cookie-popup" class="cookie-popup">
+  <p>
+    Diese Website verwendet Cookies, um dir die beste Erfahrung zu bieten.
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Akzeptieren</button>
+    <button id="decline-cookies">Ablehnen</button>
+  </div>
+</div>
+<div id="custom-popup" class="popup">
+  <div class="popup-content">
+    <p id="popup-text"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+</body>
+</html>
+<script>
+const cookiePopup = document.getElementById("cookie-popup");
+const acceptBtn = document.getElementById("accept-cookies");
+const declineBtn = document.getElementById("decline-cookies");
+
+// Prüfen ob schon akzeptiert
+if(localStorage.getItem("cookiesAccepted")){
+  cookiePopup.style.display = "none";
+}
+
+// Accept
+acceptBtn.addEventListener("click", () => {
+  localStorage.setItem("cookiesAccepted", "true");
+  cookiePopup.style.display = "none";
+});
+
+// Decline
+declineBtn.addEventListener("click", () => {
+  cookiePopup.style.display = "none";
+});
+
+function scrollToSection() {
+  document.getElementById("move-down").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+</script>

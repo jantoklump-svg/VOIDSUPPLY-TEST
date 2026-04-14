@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID SUPPLY - AGB</title>
+    <link rel="stylesheet" href="../css/H_style.css">
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-text">
+    <img id="logo-img" src="../img/logo.png" alt="Logo">
+    <h1>VOID SUPPLY</h1>
+    <h2 id="tt1">Allgemeine Geschäftsbedingungen (AGB) – VOIDSUPPLY <br></h2>
+    <h3 id="tt1">1. Geltungsbereich</h3>
+    <h4 id="tt1">Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Bestellungen und Käufe von Kleidung über die Website VOIDSUPPLY in Freiburg. Mit der Bestellung erkennt der Kunde diese AGB an.</h4>
+    <h3 id="tt1">2. Vertragsabschluss</h3>
+    <h4 id="tt1">Der Kaufvertrag kommt zustande, sobald der Kunde die Kleidung bestellt und die Abholung vor Ort bestätigt. <br>Die Ware wird bei Abholung bar bezahlt.</h4>
+    <h3 id="tt1">3. Abholung & Zahlung</h3>
+    <h4 id="tt1">Die Abholung erfolgt nach Terminvereinbarung am angegebenen Abholort. <br>Die Bezahlung erfolgt ausschließlich in bar bei Abholung <br>Der Kunde prüft die Ware bei Abholung auf sichtbare Mängel.</h4>
+    <h3 id="tt1">4. Widerrufsrecht / Rückgabe</h3>
+    <h4 id="tt1">Bei Abholung vor Ort besteht kein gesetzliches Widerrufsrecht, da der Kauf direkt im Geschäft abgeschlossen wird. <br>Rückgabe oder Umtausch erfolgt nur nach gesonderter Vereinbarung.</h4>
+    <h3 id="tt1">5. Datenschutz</h3>
+    <h4 id="tt1">Personenbezogene Daten (Name, Telefonnummer, E-Mail) werden ausschließlich für die Abwicklung des Kaufs gespeichert und nicht an Dritte weitergegeben. <br>Die Daten werden gelöscht, sobald sie für den Kauf nicht mehr benötigt werden.</h4>
+    <h3 id="tt1">6. Haftung</h3>
+    <h4 id="tt1">VOIDSUPPLY haftet nur für Schäden, die vorsätzlich oder grob fahrlässig verursacht wurden.</h4>
+    <h3 id="tt1">Es gilt das Recht der Bundesrepublik Deutschland. <br>Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</h3>
+
+    <button id="Button1" onclick="window.location.href='homepage.html'">Zurück zur Homepage</button>
+  </div>
+
+
+
+</section>
+<div id="cookie-popup" class="cookie-popup">
+  <p>
+    Diese Website verwendet Cookies, um dir die beste Erfahrung zu bieten.
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Akzeptieren</button>
+    <button id="decline-cookies">Ablehnen</button>
+  </div>
+</div>
+<div id="custom-popup" class="popup">
+  <div class="popup-content">
+    <p id="popup-text"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+</body>
+</html>
+<script>
+const cookiePopup = document.getElementById("cookie-popup");
+const acceptBtn = document.getElementById("accept-cookies");
+const declineBtn = document.getElementById("decline-cookies");
+
+// Prüfen ob schon akzeptiert
+if(localStorage.getItem("cookiesAccepted")){
+  cookiePopup.style.display = "none";
+}
+
+// Accept
+acceptBtn.addEventListener("click", () => {
+  localStorage.setItem("cookiesAccepted", "true");
+  cookiePopup.style.display = "none";
+});
+
+// Decline
+declineBtn.addEventListener("click", () => {
+  cookiePopup.style.display = "none";
+});
+
+function scrollToSection() {
+  document.getElementById("move-down").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+</script>

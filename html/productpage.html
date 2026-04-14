@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="title">Laden...</title>
+<link rel="stylesheet" href="../css/P_style.css">
+<link rel="stylesheet" href="../css/H_style.css">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+<img id="logo-img" src="../img/logo.png" alt="Logo">
+<div class="logo">VOIDSUPPLY</div>
+
+<nav>
+<ul>
+<li><a href="homepage.html"><img id="none" src="../img/icon/icons8-home-50.png" alt="HOME"></a></li>
+<li><a href="wip.html">OBERTEILE</a></li>
+<li><a href="wip.html">HOSEN</a></li>
+<li><a href="wip.html">SCHUHE</a></li>
+<li><a href="accessoires.html">ACCESSOIRES</a></li>
+<li><a href="wip.html">COUPONS</a></li>
+</ul>
+</nav>
+
+ <div class="icons">
+    <button id="open-search" class="search-button"><img id="icon-ss" src="../img/icon/icons8-search-50.png" alt="SEARCH"></button>
+
+    <a href="cart.html"><img id="cart-ss" src="../img/icon/icons8-cart-50.png" alt="SEARCH"></a>
+  </div>
+  <div id="search-bar" class="search-bar">
+    <input type="text" placeholder="Suche...">
+    <button>Suchen</button>
+    <button id="close-search" class="close-search">✕</button>
+  </div>
+</header>
+
+<script>
+  const openBtn = document.getElementById('open-search');
+  const closeBtn = document.getElementById('close-search');
+  const searchBar = document.getElementById('search-bar');
+
+  openBtn.addEventListener('click', () => {
+    searchBar.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    searchBar.classList.remove('active');
+  });
+</script>
+
+<section class="product-page">
+
+<div class="product-images">
+  <img src="../img/Placeholder.webp" alt="">
+  <img src="../img/Placeholder.webp" alt="">
+  <div class="product-sale" id="sale-icon">
+    <img src="../img/icon/icons8-sale-50-b.png" alt="Sale">
+  </div>
+</div>
+
+<div class="product-details">
+<h1 id="product-name"></h1>
+<p class="price" id="product-price"></p>
+
+<div class="product-sale" style="display:none;" id="sale-icon">
+  <img src="../img/icon/icons8-sale-50-b.png" alt="Sale">
+</div>
+
+<p class="description" id="product-description"></p>
+<p class="instock" id="product-instock"></p>
+
+<div class="product-options">
+  <div class="option">
+    <label for="size">Größe:</label>
+    <select id="size" name="size">
+      <option value="">Größe</option>
+      <option value="s">S</option>
+      <option value="m">M</option>
+      <option value="l">L</option>
+      <option value="xl">XL</option>
+    </select>
+  </div>
+
+  <div class="option">
+    <label for="color">Farbe / Art:</label>
+    <select id="color" name="color">
+      <option value="">Farbe</option>
+      <option value="schwarz">Schwarz</option>
+      <option value="weiß">Weiß</option>
+      <option value="rot">Rot</option>
+      <option value="blau">Blau</option>
+    </select>
+  </div>
+
+  <div class="option">
+    <label for="quantity">Menge:</label>
+    <input type="number" id="quantity" name="quantity" min="1" value="1" />
+  </div>
+</div>
+<button class="add-to-cart" onclick="addtocart()" id="addtocart">In den Warenkorb</button>
+</div>
+
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+
+
+<div>
+<h3>Support</h3>
+<p><a href="contact.html" id="linkrel">Kontakt</a></p>
+<p><a href="wip.html" id="linkrel">Versand</a></p>
+<p><a href="wip.html" id="linkrel">Rückgabe</a></p>
+</div>
+
+<div>
+<h3>Company</h3>
+<p><a href="wip.html" id="linkrel">Über uns</a></p>
+<p></p>
+</div>
+
+<div>
+<h3>Infos</h3>
+<p><a href="wip.html" id="linkrel">Warum wir?</a></p>
+<p><a href="wip.html" id="linkrel">Q&A</a></p>
+<p><a href="agbs.html" id="linkrel">AGBS</a></p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 VOID Supply / © 2026 Icons8</p>
+
+</footer>
+<div id="cookie-popup" class="cookie-popup">
+  <p>
+    Diese Website verwendet Cookies, um dir die beste Erfahrung zu bieten.
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Akzeptieren</button>
+    <button id="decline-cookies">Ablehnen</button>
+  </div>
+</div>
+<div id="custom-popup" class="popup">
+  <div class="popup-content">
+    <p id="popup-text"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+<script src="../data.js"></script>
+<script src="../product.js"></script>
+<script src="../data_coupon.js"></script>
+<script src="../cookies.js"></script>
+</body>
+</html>
+
+<script>
+      // Gespeicherte ID holen
+  const productId = parseInt(localStorage.getItem("selectedProductId"));
+  const product = products.find(p => p.id === productId);
+
+  if (!product) {
+    document.body.innerHTML = "<h1>Produkt nicht gefunden</h1>";
+  } else {
+    // Seitentitel setzen
+    document.title = "VOID SUPPLY - " + product.name;
+
+    // Inhalte ersetzen
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-price").textContent = product.price + "€";
+    document.getElementById("product-description").textContent = product.description;
+    document.getElementById("product-instock").textContent =
+      product.inStock ? "Verfügbar" : "Ausverkauft";
+
+    // Bilder setzen
+    const images = document.querySelectorAll(".product-images img");
+    if(images[0]) images[0].src = "../product/" + product.image_1;
+    if(images[1]) images[1].src = "../product/" + product.image_2;
+
+    // Sale-Icon
+    const saleIcon = document.querySelector(".product-sale");
+    if(saleIcon){
+      saleIcon.style.display = product.rabatt ? "block" : "none";
+    }
+
+    // Farben dynamisch füllen
+    const colorSelect = document.getElementById("color");
+    if(colorSelect && product.colors){
+      colorSelect.innerHTML = product.colors.map(c => `<option value="${c}">${c}</option>`).join("");
+    }
+
+    // Größen dynamisch füllen (optional)
+    const sizeSelect = document.getElementById("size");
+    if(sizeSelect){
+      if(product.sizes && product.sizes.length > 0){
+        sizeSelect.style.display = "inline";
+        sizeSelect.innerHTML = `<option value="">Größe wählen</option>` +
+                               product.sizes.map(s => `<option value="${s}">${s}</option>`).join("");
+      } else {
+        // Keine Größen vorhanden → ausblenden
+        sizeSelect.style.display = "none";
+      }
+    }
+  }
+
+</script>
+<script>
+const cookiePopup = document.getElementById("cookie-popup");
+const acceptBtn = document.getElementById("accept-cookies");
+const declineBtn = document.getElementById("decline-cookies");
+
+// Prüfen ob schon akzeptiert
+if(localStorage.getItem("cookiesAccepted")){
+  cookiePopup.style.display = "none";
+}
+
+// Accept
+acceptBtn.addEventListener("click", () => {
+  localStorage.setItem("cookiesAccepted", "true");
+  cookiePopup.style.display = "none";
+});
+
+// Decline
+declineBtn.addEventListener("click", () => {
+  cookiePopup.style.display = "none";
+});
+
+function scrollToSection() {
+  document.getElementById("move-down").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+</script>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOID SUPPLY - ACCESSOIRES</title>
+<link rel="stylesheet" href="../css/P_style.css">
+<link rel="stylesheet" href="../css/H_style.css">
+<link rel="icon" type="image/png" sizes="192x192" href="../img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+<img id="logo-img" src="../img/logo.png" alt="Logo">
+<div class="logo">VOIDSUPPLY</div>
+
+<nav>
+<ul>
+<li><a href="homepage.html"><img id="none" src="../img/icon/icons8-home-50.png" alt="HOME"></a></li>
+<li><a href="wip.html">OBERTEILE</a></li>
+<li><a href="wip.html">HOSEN</a></li>
+<li><a href="wip.html">SCHUHE</a></li>
+<li><a href="accessoires.html">ACCESSOIRES</a></li>
+<li><a href="wip.html">COUPONS</a></li>
+</ul>
+</nav>
+
+ <div class="icons">
+    <button id="open-search" class="search-button"><img id="icon-ss" src="../img/icon/icons8-search-50.png" alt="SEARCH"></button>
+
+    <a href="cart.html"><img id="cart-ss" src="../img/icon/icons8-cart-50.png" alt="SEARCH"></a>
+  </div>
+  <div id="search-bar" class="search-bar">
+    <input type="text" placeholder="Suche...">
+    <button>Suchen</button>
+    <button id="close-search" class="close-search">✕</button>
+  </div>
+</header>
+<script>
+  const openBtn = document.getElementById('open-search');
+  const closeBtn = document.getElementById('close-search');
+  const searchBar = document.getElementById('search-bar');
+
+  openBtn.addEventListener('click', () => {
+    searchBar.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    searchBar.classList.remove('active');
+  });
+</script>
+<section class="featured">
+
+  <h2>Accessoires</h2>
+
+  <div class="product-grid">
+
+    <div class="product" onclick="openProduct(2)">
+      <img src="../product/HOT_1.jpg" alt="gucci_cap">
+      <h3>GuÇÇi Cap</h3>
+      <p>14.99€</p>
+    </div>
+
+    <div class="product" onclick="openProduct(4)">
+      <img src="../product/HOT_3.jpg" alt="Goʏard Cardholder">
+      <h3>Goʏard Cardholder</h3>
+      <p>14.99€</p>
+    </div>
+
+    <div class="product" onclick="openProduct(6)">
+      <img src="../product/HermesBelt1HOT.jpg" alt="Hermes Belt">
+      <h3>Hermes Belt</h3>
+      <p>24.99€</p>
+    </div>
+
+    <div class="product" onclick="openProduct(7)"">
+      <img src="../product/PradaBelt1HOT.jpg" alt="Prada Belt">
+      <h3>Prada Belt</h3>
+      <p>19.99€</p>
+    </div>
+
+    <div class="product" onclick="openProduct(1)"">
+      <img src="../img/Placeholder.webp" alt="">
+      <h3>Produkt nicht gefunden</h3>
+      <p>--.--€</p>
+    </div>
+
+  </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+<div class="footer-grid">
+
+
+
+<div>
+<h3>Support</h3>
+<p><a href="contact.html" id="linkrel">Kontakt</a></p>
+<p><a href="wip.html" id="linkrel">Versand</a></p>
+<p><a href="wip.html" id="linkrel">Rückgabe</a></p>
+</div>
+
+<div>
+<h3>Company</h3>
+<p><a href="wip.html" id="linkrel">Über uns</a></p>
+<p></p>
+</div>
+
+<div>
+<h3>Infos</h3>
+<p><a href="wip.html" id="linkrel">Warum wir?</a></p>
+<p><a href="wip.html" id="linkrel">Q&A</a></p>
+<p><a href="agbs.html" id="linkrel">AGBS</a></p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 VOID Supply / © 2026 Icons8</p>
+
+</footer>
+<div id="cookie-popup" class="cookie-popup">
+  <p>
+    Diese Website verwendet Cookies, um dir die beste Erfahrung zu bieten.
+  </p>
+  <div class="cookie-buttons">
+    <button id="accept-cookies">Akzeptieren</button>
+    <button id="decline-cookies">Ablehnen</button>
+  </div>
+</div>
+<div id="custom-popup" class="popup">
+  <div class="popup-content">
+    <p id="popup-text"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+<script src="../data.js"></script>
+<script src="../product.js"></script>
+<script src="../data_coupon.js"></script>
+<script src="../cookies.js"></script>
+</body>
+</html>
+
+<script>
+  
+function openProduct(id) {
+  // Produkt in localStorage speichern
+  localStorage.setItem("selectedProductId", id);
+  // Zur Produktseite weiterleiten
+  window.location.href = "productpage.html";
+}
+
+</script>
+<script>
+const cookiePopup = document.getElementById("cookie-popup");
+const acceptBtn = document.getElementById("accept-cookies");
+const declineBtn = document.getElementById("decline-cookies");
+
+// Prüfen ob schon akzeptiert
+if(localStorage.getItem("cookiesAccepted")){
+  cookiePopup.style.display = "none";
+}
+
+// Accept
+acceptBtn.addEventListener("click", () => {
+  localStorage.setItem("cookiesAccepted", "true");
+  cookiePopup.style.display = "none";
+});
+
+// Decline
+declineBtn.addEventListener("click", () => {
+  cookiePopup.style.display = "none";
+});
+
+function scrollToSection() {
+  document.getElementById("move-down").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+</script>
